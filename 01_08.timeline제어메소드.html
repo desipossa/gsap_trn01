@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일단 움직여보기</title>
+    <link rel="stylesheet" href="./reset.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+</head>
+
+<body>
+    <section id="s01" class="sec">
+        <div class="box">01</div>
+        <button class="btn1">pause</button>
+        <button class="btn2">play</button>
+    </section>
+
+    <script>
+        // 1. gsap는 레이아웃을 깨지 않는 transform을 간단하게 만들어 주는군!
+        // 2. 세로 움직이려면 y : number(px) 
+        // 3. 시간은 duration : number(s)
+
+        // 4. 타임라인 사용하기 https://greensock.com/docs/v3/GSAP/Timeline 
+
+
+        // GSAP      	CSS
+        // x:300      	transform: translateX(300px), margin-left: 300px 
+        // y:300      	transform: translateY(300px), margin-top: 300px 
+        // scaleX:2      	transfome: scaleX(2)
+        // scaleY:2      	transfome: scaleY(2)
+        // rotation:360      	transform: rotate(360deg)
+        // rotationX:180      	transform: rotateX(180deg)
+        // rotationY:180      	transform: rotateY(180deg)
+        // skewY:45      	transform: skewY(45deg)
+        // xPercent:45      	transform: translateX(45%)
+        // yPercent:45      	transform: translateY(45%)
+
+        // 참조1 : https://www.biew.co.kr/tag/gsap%20ease
+        // 참조2 : https://greensock.com/docs/v3/GSAP/Timeline
+
+
+
+        const BTN1 = document.querySelector('.btn1');
+        const BTN2 = document.querySelector('.btn2');
+
+
+        const M = gsap.timeline({ repeat: 10 });
+        M
+            .to('.box', { x: 500, scale: 2, rotateY: 360, duration: 3 })
+            .to('.box', { y: 500, duration: 1 })
+            .to('.box', { x: 0, borderRadius: 100 })
+            .to('.box', { y: 0, scale: 1 });
+
+
+        BTN1.addEventListener('click', () => {
+            M.pause();
+        })
+        BTN2.addEventListener('click', () => {
+            M.play();
+        })
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일단 움직여보기</title>
+    <link rel="stylesheet" href="./reset.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+</head>
+
+<body>
+    <section id="s01" class="sec">
+        <div class="box">01</div>
+    </section>
+
+    <script>
+        // 1. gsap는 레이아웃을 깨지 않는 transform을 간단하게 만들어 주는군!
+        // 2. 세로 움직이려면 y : number(px) 
+        // 3. 시간은 duration : number(s)
+
+        // 참조1 : https://www.biew.co.kr/tag/gsap%20ease
+
+        gsap.to('.box',
+            {
+                x: 500,
+                duration: 1,
+                ease: 'bounce'
+            }
+        )
+    </script>
+
+
+</body>
+
+</html>
