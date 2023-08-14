@@ -10,6 +10,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
     <style>
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
         body {
             height: 300vh;
             overflow-x: hidden;
@@ -136,7 +140,7 @@
                 ease: "none",
                 pin: true,
                 start: "top top",
-                scrub: 0.1, // 숫자에따라 변함이 있음
+                scrub: 0, // 숫자에따라 변함이 있음
             }
         })
         const H = gsap.to(panels, {
@@ -146,13 +150,14 @@
                 trigger: "#hori",
                 pin: true,
                 start: "top top",
-                scrub: 0.1, // 숫자에따라 변함이 있음
-                markers: true
-                // snap: {
-                //     snapTo: 1 / (panels.length - 1),
-                //     inertia: false,
-                //     duration: { min: 0.1, max: 0.1 }
-                // },
+                end: "6000px top",
+                scrub: 1, // 숫자에따라 변함이 있음
+                markers: true,
+                snap: { // 공간 단위로 스냅이 붙는다.
+                    snapTo: 1 / (panels.length - 1),
+                    inertia: true,
+                    duration: { min: 1, max: 1 }
+                },
                 //end: () => "+=" + (panelsContainer.offsetWidth - innerWidth)
             }
         });
